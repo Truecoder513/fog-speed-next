@@ -2,32 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.appForm {
+  min-height: 100vh;
+  width: 100vw;
+  /* background-image: linear-gradient(
+    to left top,
+    #ff0000,
+    #f9003d,
+    #e40063,
+    #c10082,
+    #910097,
+    #7129a2,
+    #4b39a7,
+    #0042a7,
+    #00519a,
+    #00577f,
+    #115864,
+    #465655
+  ); */
+  background: url("../public/imgs/animelove1.jpeg");
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.glassMorphism {
+  background: rgba(0, 0, 0, 0.46);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  border: 1px solid rgba(0, 0, 0, 1);
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+input {
+  border: 1px solid rgb(81, 78, 78);
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.inputBorder {
+  border: 1px solid rgb(81, 78, 78);
+}
+button:disabled {
+  background-color: rgba(41, 41, 141, 0.297);
+}
+.PhoneInputInput {
+  background-color: transparent !important;
+  border: 0;
+  outline: none;
 }
