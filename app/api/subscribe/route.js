@@ -1,5 +1,4 @@
 import connectDB from "@/utils/back/database";
-import { put } from "@ver";
 import User from "@/models/UserModels";
 import { mailSetter } from "@/utils/back/mail/mailer.js";
 import {
