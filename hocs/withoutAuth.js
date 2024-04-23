@@ -1,15 +1,15 @@
 /* eslint-disable react/display-name */
 "use client";
-import { FullPageSpinner } from "@/uikits/others";
-import { useAuth } from "../contexts/authContext";
+
+import { useAuth } from "../context/authContext";
 import { redirect } from "next/navigation";
 
 export const withoutAuth = (WrappedComponent) => {
   return (props) => {
-    const { user, userLoading } = useAuth();
+    const { user, userLoading, ageValid } = useAuth();
 
-    if (userLoading) return <FullPageSpinner />;
-
+    if (userLoading) return "......";
+    if (!ageValid) return redirect("/verifyAge");
     if (user) {
       return redirect("/dashboard");
     }

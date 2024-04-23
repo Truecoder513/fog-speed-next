@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 "use client";
 
-import { useAuth } from "../contexts/authContext";
+import { useAuth } from "@/context/authContext";
 import { redirect } from "next/navigation";
 
 export const withAuth = (WrappedComponent) => {
@@ -13,7 +13,7 @@ export const withAuth = (WrappedComponent) => {
     if (userLoading) return "chargement";
 
     if (!user) {
-      return redirect("/login");
+      return redirect("/");
       // return;
     }
 

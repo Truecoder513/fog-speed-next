@@ -1,7 +1,7 @@
 "use client";
 export function lsSet() {
   if (typeof window !== "undefined") {
-    return window.localStorage.setItem("ageValid", "ageValid");
+    return window.localStorage.setItem("ageValid", true);
   }
 }
 export function lsGet() {

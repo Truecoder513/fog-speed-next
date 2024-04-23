@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 import "react-phone-number-input/style.css";
 import { AuthProvider } from "@/context/authContext";
 import { Toaster } from "sonner";

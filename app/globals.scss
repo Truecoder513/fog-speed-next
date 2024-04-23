@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+$secondary-color: #e94057;
+
+* {
+  outline: 0;
+}
+.appForm {
+  min-height: 100vh;
+  width: 100vw;
+
+  background-image: url("../public/imgs/animelove1.jpeg");
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  background-color: rgba(0, 0, 0, 0.32);
+  background-blend-mode: darken;
+}
+.glassMorphism {
+  background: rgba(0, 0, 0, 0.46);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+input {
+  border: 1px solid white;
+}
+.inputBorder {
+  border: 1px solid white;
+}
+button:disabled {
+  background-color: rgba(41, 41, 141, 0.297);
+}
+.PhoneInputInput {
+  background-color: transparent !important;
+  border: 0;
+  outline: none;
+}
+.docFileField {
+  width: 100%;
+  section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    input {
+      display: none;
+
+      & + label {
+        border: solid 1px grey;
+        width: 100% !important;
+        padding: 7px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+        &.fileSelected {
+          span {
+            background-color: $secondary-color;
+            color: white;
+          }
+        }
+        span {
+          background-color: #ededed;
+          border-radius: 8px;
+          padding: 7px;
+          display: inline-block;
+          cursor: pointer;
+        }
+        p {
+          font-size: 18px;
+          font-weight: bold;
+          color: white;
+          font-size: 14px;
+          width: 70%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,11 @@
 "use client";
 import axiosInstance from "@/axios.config";
+import { lsGet, lsSet } from "@/utils/front/storage";
 import Cookies from "js-cookie";
+
 import { useRouter } from "next/navigation";
 import { createContext, useState, useEffect, useContext } from "react";
+import { toast } from "sonner";
 
 export const AuthContext = createContext();
 
@@ -15,12 +18,18 @@ function getConnectedUser(successCb, erroCb, finalyCb) {
 }
 
 export const AuthProvider = ({ children }) => {
+  const router = useRouter();
   const [user, setUser] = useState(null);
   const [userToken, setUserToken] = useState(Cookies.get("user-token"));
   const [userLoading, setUserLoading] = useState(true);
-  const router = useRouter();
   const [refetchUser, setRefetchUser] = useState(false);
   const [userError, setUserError] = useState(null);
+  const [ageValid, setAgeValid] = useState(lsGet() ? lsGet() : false);
+  const makeAgeValid = () => {
+    lsSet("ageValid", true);
+    toast.success("Age confirmé");
+    router.push("/subscribe");
+  };
 
   useEffect(() => {
     if (userToken) {
@@ -63,7 +72,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    console.log("lougout");
     setUserLoading(true);
     // router.push('/auth/login')
     setUser(null);
@@ -80,6 +88,8 @@ export const AuthProvider = ({ children }) => {
         updateLogin,
         logout,
         refetchUserLoggedData,
+        ageValid,
+        makeAgeValid,
       }}
     >
       {children}
