@@ -11,7 +11,7 @@ export const GET = async (req) => {
     const users = await User.find(
       {
         sondageChoice: category,
-        // _id: { $ne: id },
+        _id: { $ne: id },
       },
       "name img whatsappNumber"
     );
