@@ -8,6 +8,7 @@ import { useEffect } from "react";
 
 export default function Home() {
   const { ageValid } = useAuth();
+
   useEffect(() => {
     redirect("/subscribe");
   }, [ageValid]);
