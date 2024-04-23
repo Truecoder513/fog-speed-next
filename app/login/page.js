@@ -123,7 +123,7 @@ const LoginPage = () => {
         <p className="text-sm text-center mt-5 text-white">
           Vous n'avez pas de compte?{" "}
           <Link href={"/subscribe"} className="underline">
-            S'inscrire
+            Se connecter
           </Link>{" "}
         </p>
       </div>

@@ -10,6 +10,15 @@ const nextConfig = {
       "vercel_blob_rw_vEZwzmsZ5cpt4Hri_Tyk6iD5QG6ofgI3zExdS9qNaIJIRZi",
     jwtSecret: "dev-this-app-for-fog-speed-dating",
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "vezwzmsz5cpt4hri.public.blob.vercel-storage.com",
+        port: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

@@ -2,6 +2,7 @@
 import axiosInstance from "@/axios.config";
 import { lsGet, lsSet } from "@/utils/front/storage";
 import Cookies from "js-cookie";
+import { redirect } from "next/dist/server/api-utils";
 
 import { useRouter } from "next/navigation";
 import { createContext, useState, useEffect, useContext } from "react";
@@ -77,6 +78,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     setUserToken(null);
     Cookies.remove("user-token");
+    redirect("/");
   };
 
   return (

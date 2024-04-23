@@ -13,6 +13,20 @@ exports.registrationSuccessMail = () => {
   };
 };
 
+exports.newRegistrationNotification = (userName, groupName) => {
+  return {
+    title: "Nouvelle inscription dans votre groupe de rencontre",
+    content: `
+    <p>Bonjour ${userName},</p>
+    <p>Nous sommes heureux de vous informer qu'une nouvelle inscription a été enregistrée dans le groupe de rencontre "${groupName}".</p>
+    <p>Vous avez maintenant l'opportunité de rencontrer d'autres otakus partageant vos passions et vos intérêts!</p>
+    <p>Restez à l'écoute pour participer à nos prochains événements et activités!</p>
+    <p>Merci et à bientôt!</p>
+    <p>Cordialement,<br> L'équipe du FOG Club Otaku Speed Dating</p>
+    `,
+  };
+};
+
 exports.adminNotificationMail = (userData) => {
   return {
     title: "Nouvelle inscription au FOG Club Otaku Speed Dating",

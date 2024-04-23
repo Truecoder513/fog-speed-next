@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
 "use client";
 
+import LoveLoader from "@/components/LoveLoader";
 import { useAuth } from "@/context/authContext";
 import { redirect } from "next/navigation";
 
@@ -10,7 +11,7 @@ export const withAuth = (WrappedComponent) => {
 
     // const router = useRouter();
 
-    if (userLoading) return "chargement";
+    if (userLoading) return <LoveLoader />;
 
     if (!user) {
       return redirect("/");

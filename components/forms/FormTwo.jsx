@@ -9,6 +9,7 @@ import React, { Fragment, useState } from "react";
 import { Spinner } from "@/uiKits/icon";
 import axiosInstance from "@/axios.config";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const FILE_SIZE_LIMIT_MB = 5;
 const SUPPORTED_IMAGE_FORMATS = [
@@ -52,6 +53,7 @@ const FormTwo = ({ credentials, handleInput, handleUploadImg, setStep }) => {
     confirmPassword: "",
     img: "",
   });
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,6 +71,7 @@ const FormTwo = ({ credentials, handleInput, handleUploadImg, setStep }) => {
       if (response.data) {
         setLoading(false);
         toast.success(response.data.message);
+        router.push("/login");
       }
     } catch (error) {
       setLoading(false);

@@ -2,6 +2,7 @@ import User from "@/models/UserModels";
 import { mailSetter } from "@/utils/back/mail/mailer.js";
 import {
   adminNotificationMail,
+  newRegistrationNotification,
   registrationSuccessMail,
 } from "@/utils/back/mail/template";
 import { NextResponse } from "next/server";
@@ -53,11 +54,25 @@ export async function POST(req) {
       password: hashPass,
     });
 
+    const usersWithSameCategory = await User.find(
+      {
+        sondageChoice: sondageChoice,
+        email: { $ne: email },
+      },
+      "name sondageChoice email"
+    );
     mailSetter(registrationSuccessMail(), email);
     mailSetter(
-      adminNotificationMail({ name, email }),
+      adminNotificationMail({ name, email, sondageChoice }),
       "truecoder513@gmail.com"
     );
+
+    for (const user of usersWithSameCategory) {
+      mailSetter(
+        newRegistrationNotification(user.name, user.sondageChoice),
+        user.email
+      );
+    }
     return NextResponse.json(
       {
         message:
@@ -66,7 +81,7 @@ export async function POST(req) {
       { status: 201 }
     );
   } catch (error) {
-    NextResponse.json(
+    return NextResponse.json(
       {
         message: "Erreur lors de l'inscription",
       },
